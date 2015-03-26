@@ -1,0 +1,33 @@
+{
+  "name": "ProductEditor",
+  "version": "1.0.0",
+  "description": "Product editor for customgiftshop.com",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ModifyLabs/ProductEditor.git"
+  },
+  "author": "sargentsurg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ModifyLabs/ProductEditor/issues"
+  },
+  "homepage": "https://github.com/ModifyLabs/ProductEditor",
+  "devDependencies": {
+    "bower": "^1.3.12",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^4.0.0",
+    "gulp-concat": "^2.5.2",
+    "del": "^1.1.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-plumber": "^0.6.6",
+    "gulp-sourcemaps": "^1.3.0",
+    "gulp-watch": "^4.1.1",
+    "gulp-webserver": "^0.9.0",
+    "opn": "^1.0.1",
+    "run-sequence": "^1.0.2"
+  }
+}
