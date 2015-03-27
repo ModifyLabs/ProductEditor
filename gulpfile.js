@@ -19,14 +19,15 @@ var gulp = require("gulp"),
 
 
 gulp.task("default", function (cb) {
-    runSequence('clean', 'copy:html', 'copy:img', 'copy:css', 'copy:vendor', 'scripts', 'webserver', 'watch', 'open:browser', cb);
+    runSequence('clean', 'copy:html', 'copy:img', 'copy:svg', 'copy:css', 'copy:vendor', 'scripts', 'webserver', 'watch', 'open:browser', cb);
 });
 
 gulp.task("watch", function(){
 
     gulp.watch('app/index.html', ["copy:html"]);
-    gulp.watch("css/**", ["copy:css"]);
-    gulp.watch("img/**", ["copy:img"]);
+    gulp.watch("app/svg/**", ["copy:svg"]);
+    gulp.watch("app/css/**", ["copy:css"]);
+    gulp.watch("app/img/**", ["copy:img"]);
     gulp.watch("app/js/**/*.js", ["scripts"]);
 });
 
@@ -52,8 +53,15 @@ gulp.task("copy:html", function () {
         .pipe(gulp.dest("dist"));
 });
 
+gulp.task("copy:svg", function () {
+    gulp.src("app/svg/**/*.svg")
+        .pipe(plumber())
+        .pipe(gulp.dest("dist/svg"));
+});
+
+
 gulp.task("copy:vendor", function () {
-    gulp.src("vendor/**/*.js")
+    gulp.src("bower_components/**/*.js")
         .pipe(plumber())
         .pipe(gulp.dest("dist/vendor"));
 });
@@ -76,7 +84,7 @@ gulp.task("clean", function (cb) {
 });
 
 gulp.task("scripts", function () {
-    gulp.src(["app/js/**/*.js", "!app/js/Utils/*.js"])
+    gulp.src(["app/js/**/*.js"])
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(babel({modules: "amd"}))
