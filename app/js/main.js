@@ -2,27 +2,32 @@
  * Created by Sergio on 3/25/2015.
  */
 
-//From Engine
+//From Engine Utils
+import jsonLoader from 'utils/jsonLoader';
 import svgLoader from 'utils/svgLoader';
 import canvasLoader from 'utils/canvasLoader';
+
+
+//ENGINE
+import Colors from "engine/colors";
+
+
 
 class Main {
     constructor() {
 
         // initializes the canvas based on passed id param
         this.canvas = new canvasLoader("#mainCanvas");
-        this.options = {
-            firstName: "sergio",
-            lastName: "masellis",
-            dateText: "10/10/15"
-        };
+        this.colors = new Colors;
 
+        this.options = {};
         this.init();
     }
 
     init() {
 
         this.tag = new svgLoader("svg/tag.svg", function(f){
+
             this.options.firstName = f.select("text[id=firstName]");
             this.canvas.append(this.options.firstName);
 

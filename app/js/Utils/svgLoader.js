@@ -3,9 +3,9 @@
  */
 
 class svgLoader extends Snap.load {
-    constructor(url, callback, scope){
-        console.log("Canvas Loader Loaded");
-        return super(url, callback, scope);
+    constructor(){
+        console.log("SVG Loaded");
+        return super(...arguments);
     }
 }
 

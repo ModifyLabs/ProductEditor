@@ -19,13 +19,14 @@ var gulp = require("gulp"),
 
 
 gulp.task("default", function (cb) {
-    runSequence('clean', 'copy:html', 'copy:img', 'copy:svg', 'copy:css', 'copy:vendor', 'scripts', 'webserver', 'watch', 'open:browser', cb);
+    runSequence('clean', 'copy:html', 'copy:img', 'copy:svg', 'copy:css', 'copy:json', 'copy:vendor', 'scripts', 'webserver', 'watch', 'open:browser', cb);
 });
 
 gulp.task("watch", function(){
 
     gulp.watch('app/index.html', ["copy:html"]);
     gulp.watch("app/svg/**", ["copy:svg"]);
+    gulp.watch("app/json/**", ["copy:json"]);
     gulp.watch("app/css/**", ["copy:css"]);
     gulp.watch("app/img/**", ["copy:img"]);
     gulp.watch("app/js/**/*.js", ["scripts"]);
@@ -57,6 +58,12 @@ gulp.task("copy:svg", function () {
     gulp.src("app/svg/**/*.svg")
         .pipe(plumber())
         .pipe(gulp.dest("dist/svg"));
+});
+
+gulp.task("copy:json", function () {
+    gulp.src("app/json/**/*.json")
+        .pipe(plumber())
+        .pipe(gulp.dest("dist/json"));
 });
 
 
